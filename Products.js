@@ -1,6 +1,8 @@
 import React from "react";
+import classes from "./Products.module.css";
 
 import { Container } from "react-bootstrap";
+import BottomCartButton from "../Header/BottomCartButton";
 
 const productsArr = [
   {
@@ -32,77 +34,20 @@ const productsArr = [
 
 const Products = () => {
   const product = productsArr.map((prod) => (
-    <div
-      key={prod.id}
-      style={{
-        margin: "0 auto",
-        padding: "20px 30px",
-        display: "flex",
-        justifyContent: "space-around",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          flexDirection: "column",
-        }}
-      >
-        <h2
-          style={{
-            display: "block",
-            width: "100%",
-            textAlign: "center",
-            fontSize: "24px",
-            marginBottom: "15px",
-          }}
-        >
-          {prod.title}
-        </h2>
-        <div
-          style={{ maxWidth: "900 px", margin: "0 auto", padding: "20px 30px" }}
-        >
+    <div key={prod.id} className={classes.style1}>
+      <div className={classes.style2}>
+        <h2>{prod.title}</h2>
+        <div style={{ padding: "20px 30px" }}>
           <img
             src={prod.imageUrl}
             alt={prod.title}
-            style={{
-              transformOrigin: "center center",
-              objectFit: "cover",
-              padding: "0px",
-              margin: "0px",
-              transition: "ease-in 0.5s",
-              filter: "brightness(100%)",
-              height: "250px",
-              width: "250px",
-            }}
+            style={{ width: "250px" }}
           />
         </div>
 
-        <div
-          style={{
-            margin: "30px",
-            alignItems: "center",
-            justifyContent: "space-between",
-            background: "white",
-            width: "80%",
-            display: "flex",
-          }}
-        >
+        <div className={classes.style4}>
           <span>Price: ${prod.price}</span>
-          <button
-            style={{
-              cursor: "pointer",
-              padding: "8px",
-              color: "white",
-              border: "none",
-              fontSize: "15px",
-              fontWeight: "bold",
-              borderRadius: "4%",
-              background: "#56CCF2",
-            }}
-          >
-            Add to Cart
-          </button>
+          <button className={classes.style5}>Add to Cart</button>
         </div>
       </div>
     </div>
@@ -111,54 +56,12 @@ const Products = () => {
   return (
     <div>
       <main style={{ marginTop: "30px", textAlign: "center" }}>
-        <h2
-          style={{
-            display: "fixed",
-            fontFamily: "metal mania",
-            textAlign: "center",
-            padding: "20px",
-            fontSize: "30px",
-            fontWeight: "bold",
-          }}
-        >
-          Music
-        </h2>
+        <h2>Music</h2>
         <div>{product}</div>
-        <button
-          style={{
-            background: "#777",
-          
-            color: "#56CCF2",
-            padding: "0.3rem",
-            borderRadius: "5px",
-            fontWeight: "700",
-            border:"none",
-            fontSize:"16px",
-            
-          }}
-        >
-          See the cart
-        </button>
+
+        <BottomCartButton />
       </main>
-      <div
-        style={{
-          display: "flex",
-          height: "8rem",
-          backgroundColor: "#56CCF2",
-          width: "100%",
-          textAlign: " center",
-          padding: "20px",
-          color: "white",
-          fontSize: "50px",
-          fontWeight: "blod",
-          fontFamily: "Times New Roman",
-          marginTop: "40px",
-          margin: "0 auto",
-          
-        }}
-      >
-        The Generics
-      </div>
+      <div className={classes.style7}>The Generics</div>
     </div>
   );
 };
