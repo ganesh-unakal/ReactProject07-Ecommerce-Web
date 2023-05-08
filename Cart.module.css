@@ -1,0 +1,161 @@
+.style1 {
+  margin: 0px;
+  max-width: 800px;
+  position: fixed;
+  top: 50px;
+  height: 95%;
+  right: 0;
+  background-color: white;
+  border: 1px solid rgb(177, 103, 103);
+  min-height: 50vh;
+}
+
+.style2 {
+  font-family: Metal Mania;
+  text-align: center;
+  padding: 20px;
+  font-size: 30px;
+}
+
+.style3 {
+  position: absolute;
+  cursor: pointer;
+  color: rgb(121, 117, 117);
+  top: 0;
+  right: 0;
+  margin: 20px;
+  background: none;
+  font-size: 16px;
+  font-weight: 700;
+  border: 1px solid rgb(121, 117, 117);
+  border-radius: 7px;
+  padding: 5px;
+}
+
+.style4 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.style5 {
+  align-items: center;
+  border-bottom: 1px solid black;
+  margin-right: 1.5rem;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  width: 45%;
+  margin-left: 20px;
+}
+
+.style6 {
+  align-items: center;
+  border-bottom: 1px solid black;
+  margin-left: 1.5rem;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  width: 20%;
+}
+
+.style7 {
+  margin-right: 20px;
+  align-items: center;
+  border-bottom: 1px solid black;
+  margin-left: 2.5rem;
+  padding-bottom: 10px;
+}
+
+.style8 {
+  display: flex;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.style9 {
+  font-size: 18px;
+  display: flex;
+}
+
+.style10 {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+  margin-right: 1.5em;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+
+.style11 {
+  width: 80px;
+  border-radius: 20%;
+  margin-right: 20px;
+  padding: 10px;
+}
+
+.style12 {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+  margin-right: 1.5em;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  width: 20%;
+}
+
+.style13 {
+  align-items: center;
+  border-bottom: 1px solid black;
+  margin-right: 1.5rem;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  display: flex;
+}
+
+.style14 {
+  align-items: center;
+  border-bottom: 1px solid black;
+  margin-right: 1.5rem;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+
+.style15 {
+  color: white;
+  font-weight: bold;
+  background: rgb(231, 76, 76);
+  cursor: pointer;
+  border: none;
+  border-radius: 8%;
+  height: 30px;
+  outline: none;
+  padding: 0px 7px;
+}
+.style16 {
+  box-sizing: border-box;
+  display: flex;
+  font-size: 1.2rem;
+}
+
+.style17 {
+  margin-right: 10px;
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 1.5rem;
+  margin: 20px;
+  margin-left: 15rem;
+  font-weight: bold;
+}
+.style18 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-top: 50px;
+  background: #56ccf2;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8%;
+  padding: 12px;
+  cursor: pointer;
+}
