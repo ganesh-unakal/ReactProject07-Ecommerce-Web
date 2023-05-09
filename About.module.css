@@ -1,0 +1,26 @@
+.header{
+    font-family: "Times New Roman", serif;
+    text-align: center;
+    background: #777;
+    color: white;
+    padding: 40px;
+    font-size: 100px;
+}
+.about{
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 22px;
+}
+
+.head{
+    font-family: "Metal Mania";
+    text-align: center;
+    font-weight: bold;
+
+}
+
+.p{
+    font-size: 17px;
+    margin: 20px;
+    color: #777;
+}

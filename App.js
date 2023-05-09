@@ -2,8 +2,11 @@ import Header from './component/Header/Header'
 import './App.css';
 import Products from './component/products/Products';
 import { useState } from 'react';
-import Cart from './component/Cart/Cart';
+import Cart from './component/Cart/cart';
 import CartProvider from './component/store/CartContextProvider';
+import {Route, Routes} from 'react-router-dom';
+import About from './component/pages/About';
+
 
 function App() {
  const [showCart, setShowCart]=useState(false);
@@ -16,14 +19,27 @@ function App() {
   setShowCart(false)
  }
 
+// const router =createBrowserRouter([
+//   {
+//     path: '/ABOUT', element:<About />
+//   }
+// ])
+
 
   return (
     <CartProvider>
      {showCart && < Cart onClose={hideCartHandler} />}
     <Header onShowCart={showCartHandler} />
-   <Products />
+   {/*<Products />*/}
+
+    <Routes>
+      <Route path= '/'  element={<p>welcome</p>} />
+      <Route path='/ABOUT' element={<About />} />
+      <Route path= '/STORE' element={<Products />} />
+    </Routes>
+  
     </CartProvider >
-  )
+)
 
 }
 
