@@ -6,6 +6,7 @@ import Cart from './component/Cart/cart';
 import CartProvider from './component/store/CartContextProvider';
 import {Route, Routes} from 'react-router-dom';
 import About from './component/pages/About';
+import Home from './component/pages/Home';
 
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
    {/*<Products />*/}
 
     <Routes>
-      <Route path= '/'  element={<p>welcome</p>} />
+      <Route path= '/'  element={<Home />} />
       <Route path='/ABOUT' element={<About />} />
       <Route path= '/STORE' element={<Products />} />
     </Routes>

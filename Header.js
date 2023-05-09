@@ -1,35 +1,48 @@
 import { Fragment, useContext } from "react";
-import classes from './Header.module.css';
-import CartContext from '../store/Cart-context';
+import classes from "./Header.module.css";
+import CartContext from "../store/Cart-context";
+import { NavLink } from "react-router-dom";
 
 
+const Header = (props) => {
+  const crtCntx = useContext(CartContext);
 
-const Header= (props) =>{
-const crtCntx= useContext(CartContext)
+  const numberOfItems = crtCntx.items.reduce((curNumber, item) => {
+    return curNumber + item.quantity;
+  }, 0);
 
-const numberOfItems = crtCntx.items.reduce((curNumber,item)=>{
-    return curNumber + item.quantity
-},0);
-
-return(
+  return (
     <Fragment>
-        <header className={classes.header}>       
-           <div className={classes.space} >
-            <span >HOME</span>
-            <span >STORE</span>
-            <span ><a href="https://prasadyash2411.github.io/ecom-website/about.html">ABOUT</a></span>
-           
-           
-            <button className={classes.BUtton} onClick={props.onShowCart}>cart </button>
-            <span className={classes.num}>{numberOfItems}</span>
-           <h1 className={classes.h1}>The Generics</h1>
-        
-        </div>
+      <header className={classes.header}>
+        <div className={classes.space}>
+            
+          <button className={classes.btn}>
+            <NavLink to="/" style={{textDecoration: "none", color: "white" }}>HOME </NavLink>
+          </button>
 
-       
+          <button className={classes.btn}>
+            <NavLink to="/STORE" style={{textDecoration: "none", color: "white" }} >STORE </NavLink>
+          </button>
         
-        </header>
-       </Fragment>
-)
-}
-export default Header
+          <button className={classes.btn}>       
+            <NavLink to="/ABOUT" style={{textDecoration: "none", color: "white" }} >ABOUT </NavLink>
+          </button>
+        
+
+          <button className={classes.BUtton} onClick={props.onShowCart}>
+            cart
+          </button>
+          
+          <span className={classes.num}>{numberOfItems}</span>
+        </div>
+        
+        <h1 className={classes.h1}>The Generics</h1>
+     
+      </header>
+
+
+    </Fragment>
+          
+  );
+};
+export default Header;
