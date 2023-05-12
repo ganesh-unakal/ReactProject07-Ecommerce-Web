@@ -2,6 +2,7 @@ import { Fragment, useContext } from "react";
 import classes from "./Header.module.css";
 import CartContext from "../store/Cart-context";
 import { NavLink } from "react-router-dom";
+import { Nav } from "react-bootstrap";
 
 
 const Header = (props) => {
@@ -28,6 +29,9 @@ const Header = (props) => {
             <NavLink to="/ABOUT" style={{textDecoration: "none", color: "white" }} >ABOUT </NavLink>
           </button>
         
+          <button className={classes.btn}>
+          <NavLink to= '/Contact' style={{textDecoration: 'none', color:'white'}}>Contact US</NavLink>
+          </button>
 
           <button className={classes.BUtton} onClick={props.onShowCart}>
             cart

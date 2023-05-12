@@ -1,37 +1,49 @@
-import { Fragment, useState } from "react";
-import MovieList from "./component/Header/MoviesList";
+import Header from './component/Header/Header'
+import './App.css';
+import Products from './component/products/Products';
+import { useState } from 'react';
+import Cart from './component/Cart/cart';
+import CartProvider from './component/store/CartContextProvider';
+import {Route, Routes} from 'react-router-dom';
+import About from './component/pages/About';
+import Home from './component/pages/Home';
+import Contact from './component/pages/Contact';
+
 
 function App() {
-  const [movies, setMovies] = useState([]);
+ const [showCart, setShowCart]=useState(false);
 
-  const fetchMovieHandler = () => {
-    fetch("https://swapi.dev/api/films/")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        const transformedMovies = data.results.map((movieData) => {
-          return {
-            id: movieData.episode_id,
-            title: movieData.title,
-            openindText: movieData.opening_crawl,
-            releaseDate: movieData.release_date,
-          };
-        });
-        setMovies(transformedMovies);
-      });
-  };
+ const showCartHandler =()=>{
+  setShowCart(true);
+ }
+
+ const hideCartHandler = () =>{
+  setShowCart(false)
+ }
+
+// const router =createBrowserRouter([
+//   {
+//     path: '/ABOUT', element:<About />
+//   }
+// ])
+
 
   return (
-    <Fragment>
-      <section>
-        <button onClick={fetchMovieHandler}>Fetch Movies</button>
-      </section>
-      <section>
-        <MovieList movies={movies} />
-      </section>
-    </Fragment>
-  );
+    <CartProvider>
+     {showCart && < Cart onClose={hideCartHandler} />}
+    <Header onShowCart={showCartHandler} />
+   {/*<Products />*/}
+
+    <Routes>
+      <Route path= '/'  element={<Home />} />
+      <Route path='/ABOUT' element={<About />} />
+      <Route path= '/STORE' element={<Products />} />
+      <Route path= '/Contact' element={<Contact />} />
+    </Routes>
+  
+    </CartProvider >
+)
+
 }
 
 export default App;
