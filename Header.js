@@ -2,7 +2,7 @@ import { Fragment, useContext } from "react";
 import classes from "./Header.module.css";
 import CartContext from "../store/Cart-context";
 import { NavLink } from "react-router-dom";
-import { Nav } from "react-bootstrap";
+
 
 
 const Header = (props) => {
@@ -18,19 +18,19 @@ const Header = (props) => {
         <div className={classes.space}>
             
           <button className={classes.btn}>
-            <NavLink to="/" style={{textDecoration: "none", color: "white" }}>HOME </NavLink>
+            <NavLink to="/home" style={{textDecoration: "none", color: "white" }}>HOME </NavLink>
           </button>
 
           <button className={classes.btn}>
-            <NavLink to="/STORE" style={{textDecoration: "none", color: "white" }} >STORE </NavLink>
+            <NavLink to="/store" style={{textDecoration: "none", color: "white" }} >STORE </NavLink>
           </button>
         
           <button className={classes.btn}>       
-            <NavLink to="/ABOUT" style={{textDecoration: "none", color: "white" }} >ABOUT </NavLink>
+            <NavLink to="/about" style={{textDecoration: "none", color: "white" }} >ABOUT </NavLink>
           </button>
         
           <button className={classes.btn}>
-          <NavLink to= '/Contact' style={{textDecoration: 'none', color:'white'}}>Contact US</NavLink>
+          <NavLink to= '/contact' style={{textDecoration: 'none', color:'white'}}>Contact US</NavLink>
           </button>
 
           <button className={classes.BUtton} onClick={props.onShowCart}>

@@ -1,0 +1,49 @@
+.style1{
+    margin: 0 auto;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .style2{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .style3{
+    display: block;
+            width: 100%;
+            text-align: cente;
+            font-size:24px;
+            margin-bottom: 15px;
+  }
+
+.style4{margin: 30px;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  width: 80% ;
+  display: flex;
+}
+
+.style5{
+    cursor: pointer;
+              padding: 8px;
+              color: white;
+              border: none;
+              font-size: 15px;
+              font-size: bold;
+              border-radius: 4%;
+              background: #56CCF2;
+}
+
+.style6{
+    display: fixed;
+    font-size: metal mania;
+    text-align: center;
+    padding:20px;
+    font-size: 30px;
+    font-size: bold;
+}
+

@@ -1,80 +1,68 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
+import { Container } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import CartContext from "../store/Cart-context";
 import classes from "./Products.module.css";
-import CartContext from '../store/Cart-context';
 
-
-import BottomCartButton from "../Header/BottomCartButton";
-
-const productsArr = [
+const productArr = [
   {
     id: 1,
     title: "Colors",
     price: 100,
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+    quantity: 1,
   },
-
   {
     id: 2,
     title: "Black and white Colors",
     price: 50,
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
+    quantity: 1,
   },
   {
     id: 3,
     title: "Yellow and Black Colors",
     price: 70,
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
+    quantity: 1,
   },
   {
     id: 4,
     title: "Blue Color",
     price: 100,
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
+    quantity: 1,
   },
 ];
 
-const Products = (props) => {
+const Products = () => {
+  const params = useParams();
+  console.log("nbgn", params.productId);
 
-const crtCntx=useContext(CartContext)
+  const cartCtx = useContext(CartContext);
 
-  const addItemHandler = item => {
-     crtCntx.addItem({...item, quantity: 1})
-    
-   
-  }
-  console.log('add item', addItemHandler)
+  const addItemToCart = (product) => {
+    cartCtx.addItem(product);
+  };
 
-  const product = productsArr.map((prod) => (
-
-    <div key={prod.id} className={classes.style1}>
-      <div className={classes.style2}>
-        <h2>{prod.title}</h2>
-        <div style={{ padding: "20px 30px" }}>
-          <img
-            src={prod.imageUrl}
-            alt={prod.title}
-            style={{ width: "250px" }}
-          />
-        </div>
-
-        <div className={classes.style4}>
-          <span>Price: ${prod.price}</span>
-          <button className={classes.style5} onClick={()=>addItemHandler(prod)} >Add to Cart</button>
-        </div>
-      </div>
-    </div>
-  ));
-
+  const product = productArr.find((prod) => prod.id === +params.productId);
   return (
-    <div>
-      <main style={{ marginTop: "30px", textAlign: "center" }}>
-        <h2>Music</h2>
-        <div>{product}</div>
-
-        <BottomCartButton />
-      </main>
-      <div className={classes.style7}>The Generics</div>
-    </div>
+    <Container style={{ marginTop: "30px", textAlign: "center" }}>
+      <div>
+        <h1>{product.title}</h1>
+        <img src={product.imageUrl} alt={product.title}></img>
+      </div>
+      <div className={classes.style1}>
+        <span className={classes.style2}>Price: ${product.price}</span>
+        <button
+          className={classes.style3}
+          onClick={() => addItemToCart(product)}
+        >
+          Add to Cart
+        </button>
+      </div>
+      <div>This is a bueatiful multicolours</div>
+    </Container>
   );
 };
 export default Products;
