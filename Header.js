@@ -4,6 +4,7 @@ import CartContext from "../store/Cart-context";
 import { NavLink, useHistory } from "react-router-dom";
 import Login from '../login/Login';
 import AuthContext from '../store/Auth-context'
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 
 const Header = (props) => {
@@ -29,7 +30,7 @@ const history = useHistory()
             <NavLink to="/home" style={{textDecoration: "none", color: "white" }}>HOME </NavLink>
           </button>
 
-          <button className={classes.btn}>
+            <button className={classes.btn}>
             <NavLink to="/store" style={{textDecoration: "none", color: "white" }} >STORE </NavLink>
           </button>
         
@@ -55,7 +56,7 @@ const history = useHistory()
 
           
           
-          <span className={classes.num}>{numberOfItems}</span>
+          <span style={{color: 'white'}}>{numberOfItems}</span>
         </div>
         
         <h1 className={classes.h1}>The Generics</h1>
