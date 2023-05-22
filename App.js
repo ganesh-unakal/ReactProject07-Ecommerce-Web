@@ -9,6 +9,7 @@ import About from './component/pages/About';
 import Home from './component/pages/Home';
 import Contact from './component/pages/Contact';
 import Store from './component/products/Store';
+import Login from './component/login/Login';
 
 function App() {
  const [showCart, setShowCart]=useState(false);
@@ -44,7 +45,7 @@ function App() {
 <main>
 <Switch>
           <Route path='/' exact>
-            <Redirect to='/store' />
+            <Redirect to='/login' />
           </Route>
 
           <Route path="/home" exact>
@@ -64,6 +65,10 @@ function App() {
           </Route>
           <Route path="/store/:productId">
             <Products />
+          </Route>
+
+          <Route path='/login'>
+            <Login/>
           </Route>
 
         </Switch>

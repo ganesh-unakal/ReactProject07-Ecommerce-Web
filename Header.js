@@ -1,16 +1,24 @@
 import { Fragment, useContext } from "react";
 import classes from "./Header.module.css";
 import CartContext from "../store/Cart-context";
-import { NavLink } from "react-router-dom";
-
+import { NavLink, useHistory } from "react-router-dom";
+import Login from '../login/Login';
+import AuthContext from '../store/Auth-context'
 
 
 const Header = (props) => {
   const crtCntx = useContext(CartContext);
+const authCntx = useContext(AuthContext)
+const history = useHistory()
 
   const numberOfItems = crtCntx.items.reduce((curNumber, item) => {
     return curNumber + item.quantity;
   }, 0);
+
+  const logoutHandler = () =>{
+    authCntx.logout()
+    history.replace('/login')
+  }
 
   return (
     <Fragment>
@@ -33,9 +41,19 @@ const Header = (props) => {
           <NavLink to= '/contact' style={{textDecoration: 'none', color:'white'}}>Contact US</NavLink>
           </button>
 
+          {!authCntx.isLoggedIn && <button className={classes.btn}>
+            <NavLink to='/login' style={{textDecoration: 'none', color:'white'}}>Login</NavLink>
+          </button>}
+
+          {authCntx.isLoggedIn && <button className={classes.btn} onClick={logoutHandler}>
+          Logout
+          </button>}
+
           <button className={classes.BUtton} onClick={props.onShowCart}>
             cart
           </button>
+
+          
           
           <span className={classes.num}>{numberOfItems}</span>
         </div>
