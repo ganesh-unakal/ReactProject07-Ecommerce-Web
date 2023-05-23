@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import CartContext from "../store/Cart-context";
+import AuthContext from "../store/Auth-context";
 import classes from "./Products.module.css";
 
 const productArr = [
@@ -39,10 +39,10 @@ const Products = () => {
   const params = useParams();
   console.log("nbgn", params.productId);
 
-  const cartCtx = useContext(CartContext);
+  const authCtx = useContext(AuthContext);
 
   const addItemToCart = (product) => {
-    cartCtx.addItem(product);
+    authCtx.addToCart(product);
   };
 
   const product = productArr.find((prod) => prod.id === +params.productId);
@@ -53,9 +53,9 @@ const Products = () => {
         <img src={product.imageUrl} alt={product.title}></img>
       </div>
       <div className={classes.style1}>
-        <span className={classes.style2}>Price: ${product.price}</span>
-        <button
-          className={classes.style3}
+        <span >Price: ${product.price}</span>
+        <button 
+         
           onClick={() => addItemToCart(product)}
         >
           Add to Cart

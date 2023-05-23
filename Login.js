@@ -48,19 +48,17 @@ if(isLogin){
         if(res.ok){
             return res.json()
         }else{
-            return res.json().then((data) =>{
-               let errormessage ='aunthentication error'
-
-               if(data && data.error && data.error.message){
-                errormessage= data.error.message
-                    alert(errormessage)
+            const data =  res.json();
+            let errormessage = 'aunthentication error';
+            if (data && data.error && data.error.message) {
+                errormessage = data.error.message;
+                alert(errormessage);
             }
-            })
         }
     })
 .then((data)=>{
       console.log(data)
-authCntx.login(data.idToken) //wn we get token id then we login 
+      authCntx.login(data.idToken, data.email) //wn we get token id then we login 
 
       history.replace('/store')
 }).catch((err)=>{

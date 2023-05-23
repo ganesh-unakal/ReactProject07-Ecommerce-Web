@@ -1,18 +1,21 @@
-import { Fragment, useContext } from "react";
+import { Fragment, useContext, useEffect } from "react";
 import classes from "./Header.module.css";
-import CartContext from "../store/Cart-context";
+// import CartContext from "../store/Cart-context";
 import { NavLink, useHistory } from "react-router-dom";
-import Login from '../login/Login';
 import AuthContext from '../store/Auth-context'
-import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+
 
 
 const Header = (props) => {
-  const crtCntx = useContext(CartContext);
+  //const crtCntx = useContext(CartContext);
 const authCntx = useContext(AuthContext)
 const history = useHistory()
 
-  const numberOfItems = crtCntx.items.reduce((curNumber, item) => {
+const isLoggedIn = !!authCntx.token
+
+
+
+  const numberOfItems = authCntx.items.reduce((curNumber, item) => {
     return curNumber + item.quantity;
   }, 0);
 
@@ -21,12 +24,35 @@ const history = useHistory()
     history.replace('/login')
   }
 
+  let userEmail 
+  if(!!authCntx.token){
+    userEmail = authCntx.email.replace(/[@.]/g, "");
+  }
+ 
+   async function getItems() {
+     const response = await fetch(
+       `https://crudcrud.com/api/aa3239307b934db388aeb04e042b17de/cart${userEmail}`
+     );
+     const data = await response.json();
+     data.map((item) => {
+       return authCntx.addToCart({ ...item });
+     });
+   }
+ 
+   useEffect(() => {
+     getItems();
+   }, [userEmail]);
+
+
+
+
+
   return (
     <Fragment>
       <header className={classes.header}>
         <div className={classes.space}>
             
-          <button className={classes.btn}>
+          <button className={classes.btn} >
             <NavLink to="/home" style={{textDecoration: "none", color: "white" }}>HOME </NavLink>
           </button>
 
@@ -42,21 +68,25 @@ const history = useHistory()
           <NavLink to= '/contact' style={{textDecoration: 'none', color:'white'}}>Contact US</NavLink>
           </button>
 
-          {!authCntx.isLoggedIn && <button className={classes.btn}>
+          {!isLoggedIn && <button className={classes.btn}>
             <NavLink to='/login' style={{textDecoration: 'none', color:'white'}}>Login</NavLink>
           </button>}
 
-          {authCntx.isLoggedIn && <button className={classes.btn} onClick={logoutHandler}>
+          {isLoggedIn && <button className={classes.btn} onClick={logoutHandler}>
           Logout
           </button>}
-
-          <button className={classes.BUtton} onClick={props.onShowCart}>
+          </div>
+         
+         
+         
+         <div className={classes.BUtton}>
+          <button  onClick={props.onShowCart}>
             cart
           </button>
 
+           <span style={{color: 'white'}}>{numberOfItems}</span>
           
-          
-          <span style={{color: 'white'}}>{numberOfItems}</span>
+         
         </div>
         
         <h1 className={classes.h1}>The Generics</h1>
